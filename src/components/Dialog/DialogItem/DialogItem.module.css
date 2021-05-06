@@ -1,0 +1,14 @@
+.item {
+  color: white;
+  text-decoration: none;
+  font-style: bold;
+  padding: 20px 15px;
+}
+
+.dialog_item .active {
+  color: gold;
+}
+
+.dialog_item {
+  padding-top: 10px;
+}
