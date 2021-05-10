@@ -5,13 +5,13 @@
 }
 
 .messages {
-  color: white;
+  color: black;
   padding: 20px;
 }
 
 .dialog_item {
   text-decoration: none;
-  color: white;
+  color: black;
   padding: 20px;
   font-size: large;
 }
