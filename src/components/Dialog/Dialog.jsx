@@ -1,27 +1,50 @@
 import React from 'react';
 import s from './Dialog.module.css';
-import DialogItem from './DialogItem/DialogItem';
-import Messages from './Messages/Messages';
+import { NavLink } from 'react-router-dom';
 
-const Dialog = () => {
+// Add links for users
+const DialogItem = (props) => {
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialog_item}>
-        <DialogItem name='Nick' id='1' />
-        <DialogItem name='Mike' id='2' />
-        <DialogItem name='Alex' id='3' />
-        <DialogItem name='Vladimir' id='4' />
-        <DialogItem name='Jhoe' id='5' />
-        <DialogItem name='Angela' id='6' />
-      </div>
-      <div className={s.messages}>
-        <Messages message=' Hi Mike!' />
-        <Messages message=' Wats UP!' />
-        <Messages message=' WTF is going on?!' />
-        <Messages message=' Nothing special)' />
-      </div>
+    <div>
+      <NavLink to={'/dialog/' + props.id} className={s.dialog_item + ' ' + s.active}>
+        {props.name}
+      </NavLink>
     </div>
   );
 };
 
-export default Dialog;
+const Messages = (props) => {
+  return <div className={s.message}>{props.message}</div>;
+};
+
+const Dialogs = () => {
+  let users = [
+    { id: 1, name: 'Alex' },
+    { id: 2, name: 'Max' },
+    { id: 3, name: 'Nick' },
+    { id: 4, name: 'Mike' },
+  ];
+
+  const messages = [
+    { id: 1, message: 'Hi' },
+    { id: 2, message: 'WTF' },
+    { id: 3, message: 'Why' },
+    { id: 4, message: 'No' },
+    { id: 5, message: 'Bye' },
+  ];
+
+  // Mapping to the arrays
+  let dialogElements = users.map((d) => <DialogItem name={d.name} id={d.id} />);
+
+  let message = messages.map((m) => <Messages message={m.message} id={m.id} />);
+
+  return (
+    <div className={s.dialogs}>
+      {/* add results of mapping */}
+      <div className={s.dialog_item}>{dialogElements}</div>
+      <div className={s.messages}>{message}</div>
+    </div>
+  );
+};
+
+export default Dialogs;
