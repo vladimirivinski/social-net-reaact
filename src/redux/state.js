@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from '../render';
+
 let state = {
   dialogData: {
     users: [
@@ -23,6 +25,16 @@ let state = {
       { id: 3, name: 'Third post', likeCount: 5 },
     ],
   },
+};
+
+export let addPost = (postMessage) => {
+  let newPost = {
+    id: 4,
+    name: postMessage,
+    likeCount: 0,
+  };
+  state.profileData.post.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;
