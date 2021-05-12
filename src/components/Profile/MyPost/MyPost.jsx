@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './MyPost.module.css';
+
 import Post from './Post/Post';
 
 const MyPost = (props) => {
@@ -8,15 +8,18 @@ const MyPost = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
+    props.addPost();
+  };
+
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = '';
+    props.updateNewPostText(text);
   };
 
   return (
     <div>
       <div>
-        <textarea ref={newPostElement} cols='30' rows='1'></textarea>
+        <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText} cols='30' rows='1' />
         <button onClick={addPost}>Add post</button>
       </div>
       <div>{postItem}</div>
