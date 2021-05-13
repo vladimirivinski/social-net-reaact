@@ -1,6 +1,6 @@
 import React from 'react'
 import Post from './Post/Post'
-import {addPostActionCreator, addUpdateNewPostActionCreator} from './../../../redux/state'
+import {addPostActionCreator, addUpdateNewPostActionCreator} from './../../../redux/profileReducer'
 
 const MyPost = (props) => {
     let postItem = props.post.map((p) => <Post name={p.name} id={p.id} likeCount={p.likeCount} />)
