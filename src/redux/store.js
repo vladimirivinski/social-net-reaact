@@ -47,7 +47,7 @@ let store = {
         this._callSubscriber = observer
     },
 
-    // action - object
+    // dispatch action(object) from UI
     dispatch(action) {
         // Add reducer
         this._state.profileData = profileReducer(this._state.profileData, action)
