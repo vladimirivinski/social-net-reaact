@@ -1,5 +1,5 @@
 import React from 'react'
-import MyPost from './MyPost/MyPost'
+import MyPostContainer from './MyPost/MyPostContainer'
 import s from './Profile.module.css'
 import ProfileHeader from './ProfileHeader/ProfileIHeader'
 
@@ -7,11 +7,7 @@ const Profile = (props) => {
     return (
         <div className={s.content}>
             <ProfileHeader />
-            <MyPost
-                post={props.profileData.post}
-                newPostText={props.profileData.newPostText}
-                dispatch={props.dispatch}
-            />
+            <MyPostContainer store={props.store} />
         </div>
     )
 }
