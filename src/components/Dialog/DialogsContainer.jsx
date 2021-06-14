@@ -5,7 +5,7 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/dialo
 // данные из стейта
 let mapStateToProps = (state) => {
     return {
-        dialogData: state.dialogData,
+        dialogData: state.dialogPage,
     }
 }
 // колбэки отправляющиеся в презентационную компоненту

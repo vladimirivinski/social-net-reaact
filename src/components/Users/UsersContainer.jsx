@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching} from '../../redux/usersReducer'
 import * as axios from 'axios'
 import Users from './Users'
-import preloader from '../../assets/preloader/preloader.svg'
+import Preloader from '../Common/Preloader/Preloader.js'
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
@@ -29,7 +29,7 @@ class UsersAPIComponent extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <img src={preloader} alt='' /> : null}
+                {this.props.isFetching ? <Preloader /> : null}
                 <div>
                     <Users
                         users={this.props.users}
@@ -52,7 +52,7 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
     }
 }
 
@@ -63,7 +63,7 @@ const UsersContainer = connect(mapStateToProps, {
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    toggleIsFetching
+    toggleIsFetching,
 })(UsersAPIComponent)
 
 export default UsersContainer

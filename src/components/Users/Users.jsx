@@ -1,65 +1,60 @@
 import React from 'react'
 import s from './Users.module.css'
 import emptyPhoto from '../../assets/images/empty.jpeg'
+import {NavLink} from 'react-router-dom'
 
 let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    const pages = [...Array(pagesCount).keys()].map((v) => v + 1)
+    const pagesToDisplay = pages.map((p) => (
+        <span
+            className={props.currentPage === p && s.selectedPage}
+            onClick={() => {
+                props.onPageChanged(p)
+            }}>
+            {p}
+        </span>
+    ))
 
-    let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+    const usersToDisplay = props.users.map((u) => (
+        <div key={u.id}>
+            <span>
+                <div>
+                    <NavLink to={'/profile/' + u.id}>
+                        <img className={s.photo} src={u.photos.small !== null ? u.photos.small : emptyPhoto} alt='' />
+                    </NavLink>
+                </div>
+            </span>
+            <div>
+                {u.followed ? (
+                    <button
+                        onClick={() => {
+                            props.unfollow(u.id)
+                        }}>
+                        Unfollow
+                    </button>
+                ) : (
+                    <button
+                        onClick={() => {
+                            props.follow(u.id)
+                        }}>
+                        Follow
+                    </button>
+                )}
+            </div>
+            <span>
+                <span>
+                    <div>{u.name}</div>
+                    <div>{u.status}</div>
+                </span>
+            </span>
+        </div>
+    ))
 
     return (
         <div>
-            <div className={s.scrollBar}>
-                {pages.map((p) => (
-                    <span
-                        className={props.currentPage === p && s.selectedPage}
-                        onClick={() => {
-                            props.onPageChanged(p)
-                        }}>
-                        {p}
-                    </span>
-                ))}
-            </div>
-            {props.users.map((u) => (
-                <div key={u.id}>
-                    <span>
-                        <div>
-                            <img className={s.photo} src={u.photos.small !== null ? u.photos.small : emptyPhoto} alt='' />
-                        </div>
-                        <div>
-                            {u.followed ? (
-                                <button
-                                    onClick={() => {
-                                        props.unfollow(u.id)
-                                    }}>
-                                    Unfollow
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => {
-                                        props.follow(u.id)
-                                    }}>
-                                    Follow
-                                </button>
-                            )}
-                        </div>
-                    </span>
-
-                    <span>
-                        <span>
-                            <div>{u.name}</div>
-                            <div>{u.status}</div>
-                        </span>
-                        <span>
-                            {/* <div>{u.location.country}</div>
-                            <div>{u.location.city}</div> */}
-                        </span>
-                    </span>
-                </div>
-            ))}
+            <div className={s.scrollBar}>{pagesToDisplay}</div>
+            <div>{usersToDisplay}</div>
         </div>
     )
 }
