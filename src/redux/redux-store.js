@@ -4,6 +4,7 @@ import dialogsReducer from './dialogsReducer'
 import sideBarReducer from './sideBarReducer'
 import usersReducer from './usersReducer'
 import authReducer from './authReducer'
+import newsReducer from './newsReducer'
 
 // combine all created reducers
 let reducers = combineReducers({
@@ -12,6 +13,7 @@ let reducers = combineReducers({
     sideBar: sideBarReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    newsPage: newsReducer,
 })
 
 let store = createStore(reducers)
