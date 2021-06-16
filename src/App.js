@@ -1,4 +1,4 @@
-import react from 'react'
+// import react from 'react'
 import {Route} from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import DialogsContainer from './components/Dialog/DialogsContainer'
