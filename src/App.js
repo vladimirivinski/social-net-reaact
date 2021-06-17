@@ -8,6 +8,7 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
+import Login from './components/Login/Login'
 
 const App = (props) => {
     return (
@@ -21,6 +22,7 @@ const App = (props) => {
                 <Route path='/news' render={() => <NewsContainer store={props.store} />} />
                 <Route path='/music' render={Music} />
                 <Route path='/settings' render={Settings} />
+                <Route path='/login' render={Login} />
             </div>
         </div>
     )
