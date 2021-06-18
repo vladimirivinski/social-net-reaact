@@ -1,27 +1,4 @@
-#page {
-    display: grid;
-    width: 100%;
-    height: 250px;
-    grid-template-areas:
-        'head head'
-        'foto  name'
-        'foto  cont';
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 150px 1fr;
-}
-
-#page > .header_page {
-    grid-area: head;
-}
-
-#page > .avatar {
-    grid-area: foto;
-}
-
-#page > .full_name {
-    grid-area: name;
-}
-
-#page > .contacts {
-    grid-area: cont;
+.header_image {
+    height: 50px;
+    width: 1000px;
 }
