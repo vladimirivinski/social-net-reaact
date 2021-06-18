@@ -2,6 +2,7 @@ import Dialog from './Dialog'
 import {connect} from 'react-redux'
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/dialogsReducer'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 // данные из стейта
 let mapStateToProps = (state) => {
@@ -10,8 +11,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-//HOC
-let AuthRedirectComponent = withAuthRedirect(Dialog)
+//HOC ----- withAuthRedirect ---- relocate to compose
+// Dialog ---- to compose ()(Dialog)
+// let AuthRedirectComponent = withAuthRedirect(Dialog)
 
 // колбэки отправляющиеся в презентационную компоненту
 let mapDispatchToProps = (dispatch) => {
@@ -24,10 +26,10 @@ let mapDispatchToProps = (dispatch) => {
         },
     }
 }
+// connect(mapStateToProps, mapDispatchToProps) ----- relocat to compose
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
-
-export default DialogsContainer
+export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(Dialog)
 
 //Старый код без библиотеки react-redux и connect
 
