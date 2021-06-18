@@ -50,13 +50,16 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
+    //HOK
     withAuthRedirect,
+    // function connect
     connect(mapStateToProps, {
         // Action Creators here from Reducer
         follow,
         unfollow,
         setCurrentPage,
         toggleFollowingProgress,
+        // thunks
         getUsers,
     })
 )(UsersAPIComponent)
