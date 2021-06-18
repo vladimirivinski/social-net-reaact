@@ -4,6 +4,7 @@ import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers} fro
 import Users from './Users'
 import Preloader from '../Common/Preloader/Preloader.js'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
@@ -37,9 +38,6 @@ class UsersAPIComponent extends React.Component {
     }
 }
 
-//HOC
-let AuthRedirectComponent = withAuthRedirect(UsersAPIComponent)
-
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
@@ -51,13 +49,26 @@ let mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, {
-    // Action Creators here from Reducer
-    follow,
-    unfollow,
-    setCurrentPage,
-    toggleFollowingProgress,
-    getUsers,
-})(AuthRedirectComponent)
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {
+        // Action Creators here from Reducer
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleFollowingProgress,
+        getUsers,
+    })
+)(UsersAPIComponent)
 
-export default UsersContainer
+//HOC
+// let AuthRedirectComponent = withAuthRedirect(UsersAPIComponent)
+
+// const UsersContainer = connect(mapStateToProps, {
+//     // Action Creators here from Reducer
+//     follow,
+//     unfollow,
+//     setCurrentPage,
+//     toggleFollowingProgress,
+//     getUsers,
+// })(AuthRedirectComponent)
