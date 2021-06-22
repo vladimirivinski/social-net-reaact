@@ -1,0 +1,9 @@
+.status {
+    font-style: italic;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.edit_status {
+    padding: 10px;
+}

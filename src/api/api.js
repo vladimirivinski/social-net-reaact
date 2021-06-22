@@ -14,10 +14,7 @@ export const usersAPI = {
             return response.data
         })
     },
-    async getUserById(userId) {
-        const response = await instanse.get(`profile/` + userId)
-        return response.data
-    },
+
     // async follow(userId) {
     //     const response = instanse.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
     //     return response
