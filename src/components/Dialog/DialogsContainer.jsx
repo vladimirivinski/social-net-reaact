@@ -1,6 +1,6 @@
 import Dialog from './Dialog'
 import {connect} from 'react-redux'
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/dialogsReducer'
+import {sendMessageCreator} from '../../redux/dialogsReducer'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 
@@ -18,12 +18,12 @@ let mapStateToProps = (state) => {
 // колбэки отправляющиеся в презентационную компоненту
 let mapDispatchToProps = (dispatch) => {
     return {
-        sendMessage: () => {
-            dispatch(sendMessageCreator())
+        sendMessage: (newMessageBody) => {
+            dispatch(sendMessageCreator(newMessageBody))
         },
-        updateNewMessageBody: (body) => {
-            dispatch(updateNewMessageBodyCreator(body))
-        },
+        // updateNewMessageBody: (body) => {
+        //     dispatch(updateNewMessageBodyCreator(body))
+        // },
     }
 }
 // connect(mapStateToProps, mapDispatchToProps) ----- relocat to compose
