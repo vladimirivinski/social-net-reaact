@@ -6,8 +6,6 @@ import App from './App'
 import store from './redux/redux-store'
 import './index.css'
 
-// import * as serviceWorker from './serviceWorker'
-
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
@@ -16,5 +14,3 @@ ReactDOM.render(
     </BrowserRouter>,
     document.getElementById('root')
 )
-
-// ServiceWorker.unregister()

@@ -6,6 +6,7 @@ import {NavLink} from 'react-router-dom'
 let Users = (props) => {
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     const pages = [...Array(pagesCount).keys()].map((v) => v + 1)
+    debugger
     const pagesToDisplay = pages.map((p) => (
         <span
             className={props.currentPage === p && s.selectedPage}
@@ -15,6 +16,7 @@ let Users = (props) => {
             {p}
         </span>
     ))
+
     const usersToDisplay = props.users.map((u) => (
         <div key={u.id}>
             <span>
